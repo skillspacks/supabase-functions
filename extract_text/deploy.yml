@@ -15,7 +15,7 @@ jobs:
       - name: Install Supabase CLI
         run: npm install -g supabase
 
-      - name: Deploy Supabase Functions
+      - name: Deploy Supabase Function
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: |
