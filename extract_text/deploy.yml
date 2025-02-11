@@ -1,0 +1,23 @@
+name: Deploy Supabase Edge Functions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Supabase CLI
+        run: npm install -g supabase
+
+      - name: Deploy Supabase Functions
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.sbp_e3decedada8927668a27ad145dfb678eec7fe335 }}
+        run: |
+          supabase link --iaojakycqyvboxbhlmjz
+          supabase functions deploy extract_text
