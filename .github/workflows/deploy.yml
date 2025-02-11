@@ -1,4 +1,4 @@
-name: Deploy Supabase Edge Functions
+name: Deploy Supabase Edge Function
 
 on:
   push:
@@ -12,11 +12,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Fix DNS Resolution Issue
+        run: echo "199.36.158.100 deb.supabase.com" | sudo tee -a /etc/hosts
+
       - name: Install Supabase CLI
-        run: |
-          curl -fsSL https://deb.supabase.com/install | sh
-          export PATH="/home/runner/.supabase/bin:$PATH"
-          supabase --version
+        run: curl -fsSL https://deb.supabase.com/install | sh
 
       - name: Deploy Supabase Function
         env:
