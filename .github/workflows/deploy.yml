@@ -12,11 +12,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Fix DNS Resolution Issue
-        run: echo "199.36.158.100 deb.supabase.com" | sudo tee -a /etc/hosts
-
-      - name: Install Supabase CLI
-        run: curl -fsSL https://deb.supabase.com/install | sh
+      - name: Install Supabase CLI Manually
+        run: |
+          wget https://github.com/supabase/cli/releases/latest/download/supabase-linux-amd64 -O supabase
+          chmod +x supabase
+          sudo mv supabase /usr/local/bin/
+          supabase --version
 
       - name: Deploy Supabase Function
         env:
