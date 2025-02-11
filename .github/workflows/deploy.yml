@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all files are checked out
 
-      - name: Ensure Supabase Functions Directory Exists
-        run: mkdir -p supabase-functions/
+      - name: Verify Functions Directory (Debugging)
+        run: ls -R supabase-functions/
 
       - name: Install Supabase CLI
         run: |
@@ -28,4 +30,5 @@ jobs:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: |
           supabase link --project-ref iaojakycqyvboxbhlmjz
+          cd supabase-functions/  # Set the correct working directory
           supabase functions deploy extract_text --no-verify-jwt
