@@ -1,4 +1,4 @@
-name: Deploy Supabase Edge Functions
+name: Deploy Supabase Edge Function
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: |
           supabase link --project-ref iaojakycqyvboxbhlmjz
-          supabase functions deploy extract_text
+          supabase functions deploy extract_text --no-verify-jwt
