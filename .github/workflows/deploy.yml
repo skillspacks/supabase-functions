@@ -12,9 +12,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Supabase CLI Manually
+      - name: Install Supabase CLI (Fixed Version)
         run: |
-          wget https://github.com/supabase/cli/releases/latest/download/supabase-linux-amd64 -O supabase
+          SUPABASE_LATEST=$(curl -s https://api.github.com/repos/supabase/cli/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+          wget https://github.com/supabase/cli/releases/download/${SUPABASE_LATEST}/supabase-linux-amd64 -O supabase
           chmod +x supabase
           sudo mv supabase /usr/local/bin/
           supabase --version
