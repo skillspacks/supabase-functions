@@ -12,8 +12,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Supabase CLI
-        run: npm install -g supabase
+- name: Install Supabase CLI
+  run: curl -fsSL https://deb.supabase.com/install | sh
 
       - name: Deploy Supabase Function
         env:
