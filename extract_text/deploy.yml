@@ -17,7 +17,7 @@ jobs:
 
       - name: Deploy Supabase Functions
         env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.sbp_e3decedada8927668a27ad145dfb678eec7fe335 }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: |
-          supabase link --iaojakycqyvboxbhlmjz
+          supabase link --project-ref iaojakycqyvboxbhlmjz
           supabase functions deploy extract_text
